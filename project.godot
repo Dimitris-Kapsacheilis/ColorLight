@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="ColorLight"
+config/name="ColorLight-github"
 run/main_scene="res://Scenes/Main Scene.tscn"
 config/icon="res://Icons/keyicon.png"
 

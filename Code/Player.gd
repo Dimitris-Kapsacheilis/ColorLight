@@ -33,9 +33,6 @@ var mouseDelta : Vector2 = Vector2()
 # player components
 onready var camera = get_node("Camera")
 onready var ui : Node = get_node("/root/MainScene/CanvasLayer/UI")
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -60,10 +57,7 @@ func _input (event):
 	# did the mouse move?
 	if event is InputEventMouseMotion:
 		mouseDelta = event.relative
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-# called every frame
+
 func _process (delta):
  
 	# rotate camera along X axis
@@ -119,7 +113,7 @@ func _physics_process (delta):
 	if Input.is_action_pressed("sprint") and is_on_floor():
 		moveSpeed = 8
 	elif Input.is_action_just_released("sprint"):
-		moveSpeed = 4		
+		moveSpeed = 4
 	if Input.is_action_pressed("jump") and is_on_floor():
 		vel.y = jumpForce
 	if Input.is_action_just_pressed("crouch") and is_on_floor():
