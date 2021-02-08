@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Code/Door.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.0313726, 0.439216, 0.964706, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 4 )
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[node name="BlueDoor" type="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.37866, 0, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( -4.07302e-07, 0, 3, 0, 2, 0, -2.5, 0, -4.88762e-07, 0, 2, -0.90627 )
+shape = SubResource( 1 )
+
+[node name="rotpoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="rotpoint"]
+transform = Transform( -1.46629e-07, 0, 0.2, 0, 2.15, 0, -0.9, 0, -3.25841e-08, 0.282692, 2.15, 0.667 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="rotpoint/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="rotpoint/MeshInstance/StaticBody"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="." to="." method="_on_Door_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Door_body_exited"]
